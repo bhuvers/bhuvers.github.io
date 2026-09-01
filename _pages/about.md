@@ -16,9 +16,7 @@ announcements: false
 latest_posts: false
 ---
 
-Welcome to this tiny patch of the internet where I update what I'm doing at Georgia Tech!
-
-Hey, I'm Bhuvanesh! I'm an Electrical Engineering student at Georgia Institute of Technology with a passion for building things that work at the hardware level.
+Welcome to this tiny patch of the internet where I update what I'm doing at Georgia Tech! Hey, I'm Bhuvanesh! I'm an Electrical Engineering student at Georgia Institute of Technology with a passion for building things that work at the hardware level.
 
 My interests span **PCB Design**, **Power Electronics**, and **Analog Design/Circuitry**. I love the challenge of taking a circuit from schematic to a finished board — designing layouts, optimizing power delivery, and working through the intricacies of analog signal chains.
 
