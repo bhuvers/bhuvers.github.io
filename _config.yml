@@ -2,7 +2,7 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: blank # the website title (if blank, full name will be used instead)
+title: Bhuvanesh Senthil # the website title (if blank, full name will be used instead)
 first_name: Bhuvanesh
 middle_name:
 last_name: Senthil
@@ -10,12 +10,10 @@ contact_note: ""
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   Electrical Engineering student at Georgia Tech passionate about PCB Design, Power Electronics, and Analog Design.
 footer_text: >
-  Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
-  Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-  Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
+  &copy; Bhuvanesh Senthil. Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
 keywords: electrical-engineering, pcb-design, power-electronics, analog-design, georgia-tech # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: ⚛️ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+icon: ⚡ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 apple_touch_icon: # image name in /assets/img/ (or a rooted path / absolute URL) used for iOS home-screen bookmarks; needs a real 180x180 PNG, since Safari ignores the emoji favicon above. Left empty, iOS falls back to a screenshot of the page.
 
 url: https://bhuvers.github.io # the base hostname & protocol for your site
