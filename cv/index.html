@@ -32,7 +32,7 @@ ninja.data = [{
     },
   },{id: "nav-projects",
           title: "projects",
-          description: "A growing collection of your cool projects.",
+          description: "A selection of electrical engineering, PCB design, power electronics, and avionics projects.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/projects/";
@@ -44,7 +44,32 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{
+        },{id: "projects-rapid-test-board",
+          title: 'Rapid Test Board',
+          description: "Custom PCB designed for rapid hardware prototyping, component validation, and signal integrity testing.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/1_rapid_test_board/";
+            },},{id: "projects-ground-system-avionics-module-5",
+          title: 'Ground System Avionics Module 5',
+          description: "Ground support equipment avionics module for real-time telemetry, power management, and hardware interfacing.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/2_ground_system_avionics_module_5/";
+            },},{id: "projects-3-phase-electronic-speed-controller-esc",
+          title: '3-Phase Electronic Speed Controller (ESC)',
+          description: "High-efficiency 3-phase motor driver utilizing advanced power MOSFET switching and gate driver circuitry.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/3_3_phase_esc/";
+            },},{id: "projects-flight-computer",
+          title: 'Flight Computer',
+          description: "High-reliability embedded flight computer for sensor fusion, telemetry logging, and real-time control system execution.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/4_flight_computer/";
+            },},{id: "projects-avionics-compute-unit-io-board",
+          title: 'Avionics Compute Unit + IO Board',
+          description: "Modular avionics computing platform paired with a dedicated IO expander for multi-channel sensor signal processing and actuation.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/5_avionics_compute_unit_io_board/";
+            },},{
         id: 'social-email',
         title: 'email',
         section: 'Socials',
