@@ -46,12 +46,7 @@
       "name": "Electrical Engineering",
       "level": "",
       "icon": "fa-solid fa-microchip",
-      "keywords": [
-        "PCB Design",
-        "Power Electronics",
-        "Analog Design",
-        "Circuit Analysis"
-      ]
+      "keywords": ["PCB Design", "Power Electronics", "Analog Design", "Circuit Analysis"]
     }
   ],
   "languages": [],
@@ -59,11 +54,7 @@
     {
       "name": "Electrical Engineering",
       "icon": "fa-solid fa-bolt",
-      "keywords": [
-        "PCB Design",
-        "Power Electronics",
-        "Analog Design/Circuitry"
-      ]
+      "keywords": ["PCB Design", "Power Electronics", "Analog Design/Circuitry"]
     }
   ],
   "references": [],
