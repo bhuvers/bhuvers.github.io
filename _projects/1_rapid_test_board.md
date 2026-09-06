@@ -2,6 +2,7 @@
 layout: page
 title: Rapid Test Board
 description: Custom PCB designed for rapid hardware prototyping, component validation, and signal integrity testing.
+img: assets/img/1.jpg
 importance: 1
 category: work
 ---

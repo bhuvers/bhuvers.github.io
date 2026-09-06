@@ -2,6 +2,7 @@
 layout: page
 title: 3-Phase Electronic Speed Controller (ESC)
 description: High-efficiency 3-phase motor driver utilizing advanced power MOSFET switching and gate driver circuitry.
+img: assets/img/3.jpg
 importance: 3
 category: work
 ---

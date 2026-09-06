@@ -2,6 +2,7 @@
 layout: page
 title: Ground System Avionics Module 5
 description: Ground support equipment avionics module for real-time telemetry, power management, and hardware interfacing.
+img: assets/img/2.jpg
 importance: 2
 category: work
 ---

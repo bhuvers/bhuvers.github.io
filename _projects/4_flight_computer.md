@@ -2,6 +2,7 @@
 layout: page
 title: Flight Computer
 description: High-reliability embedded flight computer for sensor fusion, telemetry logging, and real-time control system execution.
+img: assets/img/4.jpg
 importance: 4
 category: work
 ---

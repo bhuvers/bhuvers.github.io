@@ -2,6 +2,7 @@
 layout: page
 title: Avionics Compute Unit + IO Board
 description: Modular avionics computing platform paired with a dedicated IO expander for multi-channel sensor signal processing and actuation.
+img: assets/img/5.jpg
 importance: 5
 category: work
 ---
