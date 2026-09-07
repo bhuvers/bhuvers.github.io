@@ -15,10 +15,8 @@ cv:
     Education:
       - institution: Georgia Institute of Technology
         location: Atlanta, GA
-        degree: Bachelor of Science
-        area: Electrical Engineering
-        start_date: "Aug 2024"
-        end_date: "May 2028"
+        degree: Bachelor of Science in Electrical Engineering
+        date: "Expected May 2028"
         highlights:
           - "GPA: 4.00"
           - "Concentration: Circuit Technology and Signal Processing"
