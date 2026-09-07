@@ -29,8 +29,8 @@
       "name": "Yellow Jacket Space Program",
       "location": "Atlanta, GA",
       "position": "Avionics Responsible Engineer",
-      "startDate": "2026-01-01",
-      "endDate": "",
+      "startDate": "Jan 2026",
+      "endDate": "Present",
       "highlights": [
         "Engineering 3 PCBs while owning design requirements, schematic design, component selection, simulation of circuits, layout design and review, production, and soldering/testing of 4-layer mixed-signal design boards.",
         "Designed for minimizing return current path inductance, controlled impedance routing for differential signals to prevent packet loss, ground-via stitching and shielding, power decoupling and filtering to reduce ripple current and transient voltage values while also implementing damped RLC filtering for analog signal and power lines.",
@@ -41,8 +41,8 @@
       "name": "Integrated Computational Electronics Laboratory",
       "location": "Atlanta, GA",
       "position": "Undergraduate Research Assistant",
-      "startDate": "2026-05-01",
-      "endDate": "",
+      "startDate": "May 2026",
+      "endDate": "Present",
       "highlights": [
         "Designed/characterized 5 programmable analog circuits for FPAA architectures, utilizing band-pass filters, integrators, comparators, and gain stages. Optimized open-loop gain, phase margin, and slew rate through SPICE simulations.",
         "Optimized NMOS/PMOS configurations by tuning gate-source, drain-source, and 150 mV overdrive voltage, refining drain current, intrinsic gain, parasitic capacitances from each channel, <2% current-mirror error, and body effect."
@@ -52,8 +52,8 @@
       "name": "Carrborobotics",
       "location": "Carrboro, NC",
       "position": "Lead Electrical and Harnessing Engineer",
-      "startDate": "2024-08-01",
-      "endDate": "2025-04-30",
+      "startDate": "Aug 2024",
+      "endDate": "Apr 2025",
       "highlights": [
         "Introduced new harnessing standards to increase current capacity to handle loads of up to 80A while eliminating voltage sag or UVLO conditions, while minimizing stator current of DC motors to prevent thermal overload.",
         "Eliminated Orange Pi (vision coprocessor) failures from ESD and inductive kickback by utilizing a custom 12V-5V step-down buck converter at 3A with LC input filtering to minimize voltage transients.",
@@ -69,8 +69,8 @@
       "url": "https://www.gatech.edu/",
       "area": "Electrical Engineering",
       "studyType": "Bachelor of Science",
-      "startDate": "2024-08-01",
-      "endDate": "2028-05-01",
+      "startDate": "Aug 2024",
+      "endDate": "May 2028",
       "score": "4.00",
       "courses": ["Circuit Technology", "Signal Processing"]
     }
@@ -94,24 +94,20 @@
         "STM32CubeIDE/MX",
         "SolidWorks",
         "Git",
+        "Github",
         "Java",
+        "Visual Studio Code",
+        "FDM 3D Printing",
         "Arduino IDE",
-        "PlatformIO"
+        "PlatformIO",
+        "Excel"
       ]
     },
     {
       "name": "Lab Hardware",
       "level": "",
-      "icon": "fa-solid fa-flask",
-      "keywords": [
-        "Oscilloscope",
-        "Multimeter",
-        "Power Supplies",
-        "Logic Analyzer",
-        "VNA",
-        "Electronic Loads",
-        "Current Probes"
-      ]
+      "icon": "fa-solid fa-screwdriver-wrench",
+      "keywords": ["Oscilloscope", "Multimeter", "Power Supplies", "Logic Analyzer", "VNA", "Electronic Loads", "Current Probes"]
     },
     {
       "name": "PCB Design",
@@ -126,6 +122,7 @@
         "Differential pair routing",
         "Controlled impedance",
         "ESD protection",
+        "Transient + Inrush current protection",
         "Crosstalk mitigation",
         "Transmission-line theory"
       ]
@@ -134,34 +131,17 @@
       "name": "Mixed-Signal + Interfaces",
       "level": "",
       "icon": "fa-solid fa-signal",
-      "keywords": [
-        "SPI",
-        "QSPI",
-        "I2C",
-        "UART",
-        "CAN",
-        "RS-232/422/485",
-        "Ethernet",
-        "ADCs (SAR)",
-        "IV sensing",
-        "AFE filtering"
-      ]
+      "keywords": ["SPI", "QSPI", "I2C", "UART", "CAN", "RS-232/422/485", "Ethernet", "ADCs (SAR)", "IV sensing", "AFE filtering"]
     }
   ],
   "languages": [],
-  "interests": [
-    {
-      "name": "Electrical Engineering",
-      "icon": "fa-solid fa-bolt",
-      "keywords": ["PCB Design", "Power Electronics", "Analog Design/Circuitry"]
-    }
-  ],
+  "interests": [],
   "references": [],
   "projects": [
     {
       "name": "Rapid Test Resistive Temperature Detection Board",
-      "startDate": "2026-01-01",
-      "endDate": "2026-05-01",
+      "startDate": "Jan 2026",
+      "endDate": "May 2026",
       "highlights": [
         "Designed a mixed-signal board with a Resistive Temperature Detection (RTD) Sensor, incorporated anti-aliasing on a 4-wire configuration to minimize error at 0.8°C, utilizing ADC's IDAC to provide excitation without biasing.",
         "Minimized high-frequency switching noise by >9 dB and peak-to-peak by including an AFE filtering network for the RTD, utilizing LTspice AC analysis to tune cutoff frequencies, with the maximum cutoff at 15.9 kHz."
@@ -169,8 +149,8 @@
     },
     {
       "name": "Avionics Compute Unit IO Board",
-      "startDate": "2026-05-01",
-      "endDate": "2026-08-01",
+      "startDate": "May 2026",
+      "endDate": "Aug 2026",
       "highlights": [
         "Designed a 4-layer testing board with 118 GPIO Pins and RS-232, 2 UART, 2 I2C, Ethernet, and 5 SPI channels accessible by pin headers to characterize dynamic system behavior and responses utilizing a logic analyzer.",
         "Utilized a 4-channel, 12-bit SAR ADC for current and voltage sensing, utilizing a 0-100mA Kelvin-shunt resistor current sensing with 160 Hz anti-aliasing, ADC calibration with a 3.3V reference, communicated via SPI.",

@@ -3,70 +3,130 @@ cv:
   email: bhuvaneshsenthil10@gmail.com
   phone: "919-454-2835"
   website: https://bhuvers.github.io
-  location: US Citizen
+  location: Atlanta, GA
+
   social_networks:
     - network: LinkedIn
       username: bhuvanesh-senthil
     - network: GitHub
       username: bhuvers
+
   sections:
-    education:
+    Education:
       - institution: Georgia Institute of Technology
-        area: Electrical Engineering
-        degree: Bachelor of Science
-        start_date: 2024-08
-        end_date: 2028-05
         location: Atlanta, GA
+        degree: Bachelor of Science
+        area: Electrical Engineering
+        start_date: "Aug 2024"
+        end_date: "May 2028"
         highlights:
           - "GPA: 4.00"
           - "Concentration: Circuit Technology and Signal Processing"
-    experience:
+
+    Experience:
       - company: Yellow Jacket Space Program
         position: Avionics Responsible Engineer
-        start_date: 2026-01
-        end_date: present
         location: Atlanta, GA
+        start_date: "Jan 2026"
+        end_date: "Present"
         highlights:
-          - Engineering 3 PCBs while owning design requirements, schematic design, component selection, simulation of circuits, layout design and review, production, and soldering/testing of 4-layer mixed-signal design boards.
-          - Designed for minimizing return current path inductance, controlled impedance routing for differential signals to prevent packet loss, ground-via stitching and shielding, power decoupling and filtering to reduce ripple current and transient voltage values while also implementing damped RLC filtering for analog signal and power lines.
-          - Tailored multi-stage power distribution networks (buck/boost converters + linear-dropout regulators) to deliver up to 15W of continuous power, clamping voltage down with TVS diodes for OCP, while implementing active inrush current limitation, UV/OV protection, and creepage control while maintaining power and signal integrity.
+          - "Engineering 3 PCBs while owning design requirements, schematic design, component selection, simulation of circuits, layout design and review, production, and soldering/testing of 4-layer mixed-signal design boards."
+          - "Designed for minimizing return current path inductance, controlled impedance routing for differential signals to prevent packet loss, ground-via stitching and shielding, power decoupling and filtering to reduce ripple current and transient voltage values while also implementing damped RLC filtering for analog signal and power lines."
+          - "Tailored multi-stage power distribution networks (buck/boost converters + linear-dropout regulators) to deliver up to 15W of continuous power, clamping voltage down with TVS diodes for OCP, while implementing active inrush current limitation, UV/OV protection, and creepage control while maintaining power and signal integrity."
+
       - company: Integrated Computational Electronics Laboratory
         position: Undergraduate Research Assistant
-        start_date: 2026-05
-        end_date: present
         location: Atlanta, GA
+        start_date: "May 2026"
+        end_date: "Present"
         highlights:
-          - Designed/characterized 5 programmable analog circuits for FPAA architectures, utilizing band-pass filters, integrators, comparators, and gain stages. Optimized open-loop gain, phase margin, and slew rate through SPICE simulations.
-          - Optimized NMOS/PMOS configurations by tuning gate-source, drain-source, and 150 mV overdrive voltage, refining drain current, intrinsic gain, parasitic capacitances from each channel, less than 2% current-mirror error, and body effect.
+          - "Designed/characterized 5 programmable analog circuits for FPAA architectures, utilizing band-pass filters, integrators, comparators, and gain stages. Optimized open-loop gain, phase margin, and slew rate through SPICE simulations."
+          - "Optimized NMOS/PMOS configurations by tuning gate-source, drain-source, and 150 mV overdrive voltage, refining drain current, intrinsic gain, parasitic capacitances from each channel, <2% current-mirror error, and body effect."
+
       - company: Carrborobotics
         position: Lead Electrical and Harnessing Engineer
-        start_date: 2024-08
-        end_date: 2025-04
         location: Carrboro, NC
+        start_date: "Aug 2024"
+        end_date: "Apr 2025"
         highlights:
-          - Introduced new harnessing standards to increase current capacity to handle loads of up to 80A while eliminating voltage sag or UVLO conditions, while minimizing stator current of DC motors to prevent thermal overload.
-          - Eliminated Orange Pi (vision coprocessor) failures from ESD and inductive kickback by utilizing a custom 12V-5V step-down buck converter at 3A with LC input filtering to minimize voltage transients.
-          - Achieved low latency signaling by wiring a Differential CAN Bus with a controlled impedance + termination resistor of 120 ohms to minimize signal attenuation, minimizing EMI from inductive loads throughout the system.
-    projects:
+          - "Introduced new harnessing standards to increase current capacity to handle loads of up to 80A while eliminating voltage sag or UVLO conditions, while minimizing stator current of DC motors to prevent thermal overload."
+          - "Eliminated Orange Pi (vision coprocessor) failures from ESD and inductive kickback by utilizing a custom 12V-5V step-down buck converter at 3A with LC input filtering to minimize voltage transients."
+          - "Achieved low latency signaling by wiring a Differential CAN Bus with a controlled impedance + termination resistor of 120 ohms to minimize signal attenuation, minimizing EMI from inductive loads throughout the system."
+
+    Projects:
       - name: Rapid Test Resistive Temperature Detection Board
-        start_date: 2026-01
-        end_date: 2026-05
+        start_date: "Jan 2026"
+        end_date: "May 2026"
         highlights:
-          - Designed a mixed-signal board with a Resistive Temperature Detection (RTD) Sensor, incorporated anti-aliasing on a 4-wire configuration to minimize error at 0.8 degrees C, utilizing ADC's IDAC to provide excitation without biasing.
-          - Minimized high-frequency switching noise by more than 9 dB and peak-to-peak by including an AFE filtering network for the RTD, utilizing LTspice AC analysis to tune cutoff frequencies, with the maximum cutoff at 15.9 kHz.
+          - "Designed a mixed-signal board with a Resistive Temperature Detection (RTD) Sensor, incorporated anti-aliasing on a 4-wire configuration to minimize error at 0.8°C, utilizing ADC's IDAC to provide excitation without biasing."
+          - "Minimized high-frequency switching noise by >9 dB and peak-to-peak by including an AFE filtering network for the RTD, utilizing LTspice AC analysis to tune cutoff frequencies, with the maximum cutoff at 15.9 kHz."
+
       - name: Avionics Compute Unit IO Board
-        start_date: 2026-05
-        end_date: 2026-08
+        start_date: "May 2026"
+        end_date: "Aug 2026"
         highlights:
-          - Designed a 4-layer testing board with 118 GPIO Pins and RS-232, 2 UART, 2 I2C, Ethernet, and 5 SPI channels accessible by pin headers to characterize dynamic system behavior and responses utilizing a logic analyzer.
-          - Utilized a 4-channel, 12-bit SAR ADC for current and voltage sensing, utilizing a 0-100mA Kelvin-shunt resistor current sensing with 160 Hz anti-aliasing, ADC calibration with a 3.3V reference, communicated via SPI.
-          - Maintained signal integrity with utilizing resistors on SPI signal lines, ethernet differential pairs routed at a controlled impedance of 100 ohms, while also minimizing return current loops and crosstalk between all transmission lines.
-    skills:
-      - label: "Software + Programming"
-        details: Altium Designer, LTSpice, KiCAD, Python (Pandas, Matplotlib, SciPy), C, C++, MATLAB, STM32CubeIDE/MX, SolidWorks, Git, Github, Java, Visual Studio Code, FDM 3D Printing, Arduino IDE, PlatformIO, Excel
-      - label: "Lab Hardware"
-        details: Oscilloscope, Multimeter, Power Supplies, Logic Analyzer, VNA, Electronic Loads, Current Probes
-      - label: "PCB Design"
-        details: PCB bring-up, PDN design, DC/DC converters, return-path management, EMI filters, differential pair routing, controlled impedance, ESD, transient + inrush current protection, crosstalk mitigation, transmission-line theory
-      - label: "Mixed-Signal + Interfaces"
-        details: SPI, QSPI, I2C, UART, CAN, RS-232/422/485, Ethernet, ADCs (SAR), IV sensing, AFE filtering
+          - "Designed a 4-layer testing board with 118 GPIO Pins and RS-232, 2 UART, 2 I2C, Ethernet, and 5 SPI channels accessible by pin headers to characterize dynamic system behavior and responses utilizing a logic analyzer."
+          - "Utilized a 4-channel, 12-bit SAR ADC for current and voltage sensing, utilizing a 0-100mA Kelvin-shunt resistor current sensing with 160 Hz anti-aliasing, ADC calibration with a 3.3V reference, communicated via SPI."
+          - "Maintained signal integrity with utilizing resistors on SPI signal lines, ethernet differential pairs routed at a controlled impedance of 100 ohms, while also minimizing return current loops and crosstalk between all transmission lines."
+
+    Skills:
+      - name: "Software + Programming"
+        icon: "fa-solid fa-code"
+        keywords:
+          - Altium Designer
+          - LTSpice
+          - KiCAD
+          - Python (Pandas, Matplotlib, SciPy)
+          - C
+          - C++
+          - MATLAB
+          - STM32CubeIDE/MX
+          - SolidWorks
+          - Git
+          - Github
+          - Java
+          - Visual Studio Code
+          - FDM 3D Printing
+          - Arduino IDE
+          - PlatformIO
+          - Excel
+
+      - name: "Lab Hardware"
+        icon: "fa-solid fa-screwdriver-wrench"
+        keywords:
+          - Oscilloscope
+          - Multimeter
+          - Power Supplies
+          - Logic Analyzer
+          - VNA
+          - Electronic Loads
+          - Current Probes
+
+      - name: "PCB Design"
+        icon: "fa-solid fa-microchip"
+        keywords:
+          - PCB bring-up
+          - PDN design
+          - DC/DC converters
+          - Return-path management
+          - EMI filters
+          - Differential pair routing
+          - Controlled impedance
+          - ESD protection
+          - Transient + Inrush current protection
+          - Crosstalk mitigation
+          - Transmission-line theory
+
+      - name: "Mixed-Signal + Interfaces"
+        icon: "fa-solid fa-signal"
+        keywords:
+          - SPI
+          - QSPI
+          - I2C
+          - UART
+          - CAN
+          - RS-232/422/485
+          - Ethernet
+          - ADCs (SAR)
+          - IV sensing
+          - AFE filtering
