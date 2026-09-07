@@ -36,4 +36,3 @@ Feel free to check out my [projects](/projects/) or [experience](/cv/) to learn 
     height: 1.25rem !important;
   }
 </style>
-
