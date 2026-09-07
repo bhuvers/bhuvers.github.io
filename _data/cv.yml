@@ -2,16 +2,62 @@
   type: time_table
   contents:
     - title: B.S. Electrical Engineering
-      institution: Georgia Institute of Technology
-      year: Present
+      institution: Georgia Institute of Technology, Atlanta, GA
+      year: Expected May 2028
       description:
-        - Interests in PCB Design, Power Electronics, and Analog Design
+        - "GPA: 4.00"
+        - "Concentration: Circuit Technology and Signal Processing"
 
 - title: Experience
   type: time_table
   contents:
-    - title: Your Role Here
-      institution: Company/Lab Name
-      year: 2024
+    - title: Avionics Responsible Engineer
+      institution: Yellow Jacket Space Program, Atlanta, GA
+      year: Jan 2026 - Present
       description:
-        - Description of your work and achievements
+        - Engineering 3 PCBs while owning design requirements, schematic design, component selection, simulation of circuits, layout design and review, production, and soldering/testing of 4-layer mixed-signal design boards.
+        - Designed for minimizing return current path inductance, controlled impedance routing for differential signals to prevent packet loss, ground-via stitching and shielding, power decoupling and filtering to reduce ripple current and transient voltage values while also implementing damped RLC filtering for analog signal and power lines.
+        - Tailored multi-stage power distribution networks (buck/boost converters + linear-dropout regulators) to deliver up to 15W of continuous power, clamping voltage down with TVS diodes for OCP, while implementing active inrush current limitation, UV/OV protection, and creepage control while maintaining power and signal integrity.
+
+    - title: Undergraduate Research Assistant
+      institution: Integrated Computational Electronics Laboratory, Atlanta, GA
+      year: May 2026 - Present
+      description:
+        - Designed/characterized 5 programmable analog circuits for FPAA architectures, utilizing band-pass filters, integrators, comparators, and gain stages. Optimized open-loop gain, phase margin, and slew rate through SPICE simulations.
+        - "Optimized NMOS/PMOS configurations by tuning gate-source, drain-source, and 150 mV overdrive voltage, refining drain current, intrinsic gain, parasitic capacitances from each channel, <2% current-mirror error, and body effect."
+
+    - title: Lead Electrical and Harnessing Engineer
+      institution: Carrborobotics, Carrboro, NC
+      year: Aug 2024 - Apr 2025
+      description:
+        - Introduced new harnessing standards to increase current capacity to handle loads of up to 80A while eliminating voltage sag or UVLO conditions, while minimizing stator current of DC motors to prevent thermal overload.
+        - Eliminated Orange Pi (vision coprocessor) failures from ESD and inductive kickback by utilizing a custom 12V-5V step-down buck converter at 3A with LC input filtering to minimize voltage transients.
+        - Achieved low latency signaling by wiring a Differential CAN Bus with a controlled impedance + termination resistor of 120 ohms to minimize signal attenuation, minimizing EMI from inductive loads throughout the system.
+
+- title: Projects
+  type: time_table
+  contents:
+    - title: Rapid Test Resistive Temperature Detection Board
+      year: Jan 2026 - May 2026
+      description:
+        - "Designed a mixed-signal board with a Resistive Temperature Detection (RTD) Sensor, incorporated anti-aliasing on a 4-wire configuration to minimize error at 0.8\u00B0C, utilizing ADC's IDAC to provide excitation without biasing."
+        - "Minimized high-frequency switching noise by >9 dB and peak-to-peak by including an AFE filtering network for the RTD, utilizing LTspice AC analysis to tune cutoff frequencies, with the maximum cutoff at 15.9 kHz."
+
+    - title: Avionics Compute Unit IO Board
+      year: May 2026 - Aug 2026
+      description:
+        - Designed a 4-layer testing board with 118 GPIO Pins and RS-232, 2 UART, 2 I2C, Ethernet, and 5 SPI channels accessible by pin headers to characterize dynamic system behavior and responses utilizing a logic analyzer.
+        - Utilized a 4-channel, 12-bit SAR ADC for current and voltage sensing, utilizing a 0-100mA Kelvin-shunt resistor current sensing with 160 Hz anti-aliasing, ADC calibration with a 3.3V reference, communicated via SPI.
+        - Maintained signal integrity with utilizing resistors on SPI signal lines, ethernet differential pairs routed at a controlled impedance of 100 ohms, while also minimizing return current loops and crosstalk between all transmission lines.
+
+- title: Skills & Competencies
+  type: list
+  contents:
+    - title: "Software + Programming"
+      items: Altium Designer, LTSpice, KiCAD, Python (Pandas, Matplotlib, SciPy), C, C++, MATLAB, STM32CubeIDE/MX, SolidWorks, Git, Github, Java, Visual Studio Code, FDM 3D Printing, Arduino IDE, PlatformIO, Excel
+    - title: "Lab Hardware"
+      items: Oscilloscope, Multimeter, Power Supplies, Logic Analyzer, VNA, Electronic Loads, Current Probes
+    - title: "PCB Design"
+      items: PCB bring-up, PDN design, DC/DC converters, return-path management, EMI filters, differential pair routing, controlled impedance, ESD, transient + inrush current protection, crosstalk mitigation, transmission-line theory
+    - title: "Mixed-Signal + Interfaces"
+      items: SPI, QSPI, I2C, UART, CAN, RS-232/422/485, Ethernet, ADCs (SAR), IV sensing, AFE filtering
