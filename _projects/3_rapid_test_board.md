@@ -22,25 +22,9 @@ The **Rapid Engine Test Board (RTB)** is an embedded instrumentation node develo
 
 The top-down architecture is structured into three tightly coupled subsystems: the **Power Distribution Network (PDN)**, the **Analog Front End (AFE)**, and the **Digital Processing & Debug Core**.
 
-```mermaid
-graph LR
-    subgraph Power["Power Distribution Network"]
-        VIN["24V Bus Input (J2)"] --> PROT["Protection<br/>(SMAJ26A TVS, Fuse, Diode)"]
-        PROT --> BUCK["TPS54560B Buck<br/>(24V → 5V)"]
-        BUCK --> LDO["TPS7A2033 LDO<br/>(5V → 3.3V)"]
-    end
-
-    subgraph Sensor["Analog Front End (AFE)"]
-        RTD["4-Wire RTD (J3)"] --> AFE_FILT["Symmetrical RC Filter<br/>(fc = 15.9 kHz)"]
-        AFE_FILT --> ADC["TI ADS114S06<br/>16-Bit ΔΣ ADC"]
-        ADC -. "Matched IDAC Excitation" .-> RTD
-    end
-
-    subgraph Digital["Compute & Debug Core"]
-        ADC == "SPI (47Ω Damped)" ==> MCU["STM32H573 MCU<br/>(Cortex-M33 @ 250 MHz)"]
-        JTAG["Samtec FTSH-107<br/>(SWD / UART VCP)"] <--> MCU
-    end
-```
+- **Power Distribution Network (PDN):** 24V bus protection (`SMAJ26A`, fuse, diode), TPS54560B buck regulator (24V → 5V), and TPS7A2033 low-noise LDO (5V → 3.3V).
+- **Analog Front End (AFE):** 4-wire RTD input, symmetrical RC anti-aliasing filter ($f_c = 15.9\,\text{kHz}$), and TI ADS114S06 16-bit delta-sigma ADC with matched IDAC current excitation.
+- **Compute & Debug Core:** STM32H573 ARM Cortex-M33 processor (250 MHz), $47\,\Omega$ series-damped SPI bus, and Samtec FTSH-107 SWD/JTAG debug interface.
 
 ### Signal & Power Flow:
 

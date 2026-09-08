@@ -31,33 +31,10 @@ Designed to mate directly with the central Avionics Compute Unit mezzanine fligh
   </div>
 </div>
 
-### System Interconnect Topology:
-
-```mermaid
-graph TD
-    subgraph Power["Power Distribution Network (PDN)"]
-        DSUB["D-Sub 9-Pin Bus Input<br/>(VBUS up to 60V @ 2A)"] --> FUSE["Protection Stage<br/>(SMAJ51A TVS, C1Q4 4A Fuse, 2x 47μF 80V)"]
-        FUSE --> BUCK["Maxim MAX17503 Buck<br/>(VBUS → 5V @ 500 kHz PWM)"]
-        BUCK --> LDO["ST LDL1117S33R LDO<br/>(5V → 3.3V Low-Noise)"]
-    end
-
-    subgraph Telemetry["Telemetry & Data Acquisition (DAQ)"]
-        BUCK --> ISNS5["INA293B3Q (5V Rail)<br/>10mΩ Shunt (1 V/A, 160 Hz LPF)"]
-        LDO --> ISNS33["INA293B3Q (3.3V Rail)<br/>10mΩ Shunt (1 V/A, 160 Hz LPF)"]
-        ISNS5 --> ADC["TI ADS124S06<br/>24-Bit ΔΣ ADC"]
-        ISNS33 --> ADC
-        ADC == "SPI5 (47Ω Damped)" ==> MEZZ
-    end
-
-    subgraph Mezzanine["Mezzanine Interconnect"]
-        MEZZ["Hirose FX10A-168S-SV<br/>168-Pin High-Density Stacking Connector"]
-    end
-
-    subgraph Peripherals["Communications & Debug Breakouts"]
-        ETH["Abracon ARJM11 Magjack<br/>(Integrated Magnetics + TPD4EUSB30 ESD)"] <== "100Ω Diff Pairs" ==> MEZZ
-        MEZZ == "118 GPIOs, SPI1/2/4/6, I2C1/2, UART4/5/7, RS-232" ==> HEADERS["Logic Analyzer Test Headers<br/>(J1–J10 Dual-Row Pin Headers)"]
-    end
-```
+- **Power Distribution Network (PDN):** D-Sub 9-pin input ($V_{\text{BUS}} \le 60\,\text{V}$ @ 2A), transient protection (`SMAJ51A`, `C1Q4` 4A fuse, $2\times 47\,\mu\text{F}$ 80V bulk capacitors), Maxim MAX17503 synchronous buck (5V @ 500 kHz PWM), and ST LDL1117S33R low-noise LDO (3.3V).
+- **Telemetry & Data Acquisition (DAQ):** Dual INA293B3Q current-sense amplifiers across $10\,\text{m}\Omega$ Kelvin shunts ($1\,\text{V}/\text{A}$ gain, $160\,\text{Hz}$ LPF) monitoring 5V and 3.3V rails, digitized alongside resistor-divided bus voltages by a TI ADS124S06 24-bit delta-sigma ADC.
+- **Mezzanine Interconnect:** Hirose FX10A-168S-SV 168-pin high-density stacking connector linking to the central Avionics Compute Unit.
+- **Communications & Debug Breakouts:** Abracon ARJM11 Magjack with integrated magnetics and TI TPD4EUSB30 ESD clamp; ten perimeter test headers (`J1`–`J10`) routing 118 GPIO lines, 5 SPI buses, 2 I2C buses, 3 UARTs, and RS-232.
 
 ### Signal & Power Flow:
 
@@ -73,17 +50,14 @@ graph TD
 
 The schematic was developed in **Altium Designer** utilizing an 8-sheet hierarchical design methodology (`ACU IO Board.PrjPcb`, Revision 1.0) to ensure modular verification, clean impedance boundaries, and signal isolation.
 
-```
-ACU IO Board.PrjPcb
-├── Sheet 1: Cover Page.SchDoc
-├── Sheet 2: Top Level.SchDoc
-├── Sheet 3: Input Connectors.SchDoc (D-Sub, Hirose FX10A Mezzanine)
-├── Sheet 4: 5V Power.SchDoc (MAX17503 Buck & 5V IV Sensing)
-├── Sheet 5: 3.3V Power.SchDoc (LDL1117S33R LDO & 3.3V IV Sensing)
-├── Sheet 6: Ethernet.SchDoc (ARJM11 Magjack & TPD4EUSB30 ESD Clamp)
-├── Sheet 7: ADC.SchDoc (TI ADS124S06 24-Bit ADC & SPI5 Interface)
-└── Sheet 8: PinHeader.SchDoc (J1–J10 Logic Analyzer Breakouts & I2C Pullups)
-```
+- **Sheet 1:** `Cover Page.SchDoc` — Project metadata, revision tracking, and global sheet index
+- **Sheet 2:** `Top Level.SchDoc` — Top-level hierarchical block diagram and bus interconnects
+- **Sheet 3:** `Input Connectors.SchDoc` — D-Sub 9-pin power entry and Hirose FX10A 168-pin mezzanine connector
+- **Sheet 4:** `5V Power.SchDoc` — MAX17503 60V synchronous buck regulator and 5V IV sensing stage
+- **Sheet 5:** `3.3V Power.SchDoc` — LDL1117S33R low-noise LDO and 3.3V IV sensing stage
+- **Sheet 6:** `Ethernet.SchDoc` — ARJM11 Magjack with integrated magnetics and TPD4EUSB30 ESD clamp
+- **Sheet 7:** `ADC.SchDoc` — TI ADS124S06 24-bit delta-sigma ADC and series-damped SPI5 interface
+- **Sheet 8:** `PinHeader.SchDoc` — J1–J10 logic analyzer breakouts and I2C pull-up networks
 
 ---
 
