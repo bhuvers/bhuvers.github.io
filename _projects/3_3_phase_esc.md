@@ -1,16 +1,11 @@
 ---
 layout: page
 title: 3-Phase Electronic Speed Controller (ESC)
-description: High-efficiency 3-phase motor driver utilizing advanced power MOSFET switching and gate driver circuitry.
-img: assets/img/3.jpg
+description: TBD — Currently in layout stage.
 importance: 3
 category: work
 ---
 
-Custom 3-phase BLDC motor controller designed for high power density and precise motor control.
+**Status:** TBD — Currently in layout stage.
 
-### Key Features
-
-- High-current N-channel MOSFET inverter bridge layout.
-- Integrated current sensing and back-EMF feedback circuitry.
-- Optimized thermal design and copper pour placement for heat dissipation.
+Detailed design documentation, inverter stage analysis, schematics, and layout files will be posted once the layout phase is finalized.
