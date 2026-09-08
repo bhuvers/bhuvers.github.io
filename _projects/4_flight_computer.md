@@ -1,15 +1,21 @@
 ---
 layout: page
 title: Flight Computer
-description: High-reliability embedded flight computer for sensor fusion, telemetry logging, and real-time control system execution.
+description: Currently undergoing design requirements for a custom personal drone platform.
 importance: 4
 category: work
 ---
 
-Compact flight computer designed for real-time sensor processing and system control in dynamic flight environments.
+**Status:** Undergoing design requirements for a personal drone project.
 
-### Key Features
+Custom embedded flight computer currently in the initial design requirements and architecture definition phase for a personal drone platform.
 
-- 9-DOF IMU, barometric altimeter, and high-rate flash memory logging.
-- Dual redundant power inputs with seamless switching logic.
-- Dedicated hardware timers for servo/actuator PWM outputs.
+### Planned Features & Architecture Targets
+
+- High-precision IMU (gyroscope + accelerometer) and barometric altimeter for real-time attitude estimation and altitude hold.
+- ARM Cortex-M based flight management unit executing state estimation and motor control loops.
+- Dedicated PWM/DShot outputs for ESC control.
+- Telemetry logging to on-board high-speed SPI flash / microSD.
+- Hardware power management and battery voltage/current monitoring.
+
+Detailed schematics, part selections, and PCB layout will be published as design milestones are completed.
