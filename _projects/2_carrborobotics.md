@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Carrborobotics (FRC Team 7763)
+title: Carrborobotics
 description: Lead Electrical & Harnessing Engineer — 12V high-current power distribution (80A peaks), custom buck-regulated coprocessor power for PhotonVision, CAN bus network, and mechanical CAD design.
 img: assets/img/carrborobotics_competition.jpg
 importance: 2
@@ -9,16 +9,16 @@ category: work
 
 <div class="row justify-content-sm-center">
   <div class="col-sm-9 mt-3 mt-md-0 text-center">
-    <img src="{{ '/assets/img/carrborobotics_competition.jpg' | relative_url }}" class="img-fluid rounded z-depth-1" alt="Carrborobotics Team 7763 Robot on Competition Field">
+    <img src="{{ '/assets/img/carrborobotics_competition.jpg' | relative_url }}" class="img-fluid rounded z-depth-1" alt="Carrborobotics Robot on Competition Field">
     <div class="caption">
-      FRC Team 7763 (Carrborobotics) competition robot positioned at the Coral loading station during the 2025 FIRST Robotics Competition season.
+      Carrborobotics competition robot positioned at the Coral loading station during the 2025 FIRST Robotics Competition season.
     </div>
   </div>
 </div>
 
 ## 1. System & Engineering Overview
 
-**Carrborobotics (FIRST Robotics Competition Team 7763)** competes annually in regional and district events, fielding custom-designed robotics platforms engineered for intense match play.
+**Carrborobotics** competes annually in regional and district events, fielding custom-designed robotics platforms engineered for intense match play.
 
 Serving as the **Lead Electrical and Harnessing Engineer** (August 2024 – April 2025), key responsibilities centered on electrical system architecture, high-current power distribution, sensor harnessing, coprocessor power management, and CAN bus integration. In addition to the electrical subsystems, contributed to the mechanical CAD design in **Onshape**—specifically designing funnel plates and custom polycarbonate protective shielding for CNC routing to safeguard the robot's mechanisms and electronics from high-impact collisions during competition.
 
@@ -106,9 +106,9 @@ In addition to leading the electrical harnessing, contributed to the mechanical 
 
 <div class="row justify-content-sm-center my-3">
   <div class="col-sm-9 text-center">
-    <img src="{{ '/assets/img/carrborobotics_cad.png' | relative_url }}" class="img-fluid rounded z-depth-1" alt="FRC Team 7763 Full Robot CAD Model">
+    <img src="{{ '/assets/img/carrborobotics_cad.png' | relative_url }}" class="img-fluid rounded z-depth-1" alt="Carrborobotics Full Robot CAD Model">
     <div class="caption">
-      Complete 3D Onshape CAD model of the FRC Team 7763 competition robot, showing the swerve chassis, cascading elevator, intake wrist, and protective shielding.
+      Complete 3D Onshape CAD model of the Carrborobotics competition robot, showing the swerve chassis, cascading elevator, intake wrist, and protective shielding.
     </div>
   </div>
 </div>
@@ -147,7 +147,7 @@ During regional and championship events, short turnarounds between matches requi
 
 | Subsystem                    | Engineering Specification                  | Implementation Details                                                                         |
 | :--------------------------- | :----------------------------------------- | :--------------------------------------------------------------------------------------------- |
-| **Team & Season**            | FRC Team 7763 (Carrborobotics)             | 2025 FIRST Robotics Competition Season (Reefscape)                                             |
+| **Team & Season**            | Carrborobotics                             | 2025 FIRST Robotics Competition Season (Reefscape)                                             |
 | **Role**                     | Lead Electrical & Harnessing Engineer      | Electrical architecture, high-current PDN, coprocessor power, CAN bus, CAD design              |
 | **Primary Power Bus**        | 12V DC nominal (SLA 18Ah battery)          | 120A main breaker, 4 AWG primary leads, Anderson SB50, REV Power Distribution Hub              |
 | **Peak Current Capability**  | Up to 80A peak per brushless drive channel | Managed via firmware stator current limits and supply current caps to prevent UVLO (<7.0V)     |
