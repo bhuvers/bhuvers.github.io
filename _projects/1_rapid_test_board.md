@@ -9,116 +9,116 @@ category: work
 
 <div class="row justify-content-sm-center">
   <div class="col-sm-10 mt-3 mt-md-0 text-center">
-    <img src="{{ '/assets/img/rapid_test_board_pcb.png' | relative_url }}" class="img-fluid rounded z-depth-1" alt="Rapid Test Board 3D PCB Render" style="max-height: 480px;">
+    <img src="{{ '/assets/img/rapid_test_board_pcb.png' | relative_url }}" class="img-fluid rounded z-depth-1" alt="Rapid Test Board Top-Down PCB Layout">
     <div class="caption">
-      3D Render of the 4-layer Rapid Test Board (RTB) designed in Altium Designer for the Yellow Jacket Space Program (YJSP).
+      Top-Down 3D View and PCB Layout of the Rapid Test Board (RTB) designed in Altium Designer for the Yellow Jacket Space Program (YJSP).
     </div>
   </div>
 </div>
 
-## Overview
+## 1. PCB Requirements & Design Specifications
 
-The **Rapid Test Board (RTB)** is a custom 4-layer mixed-signal printed circuit board engineered for the **Yellow Jacket Space Program (YJSP)** at Georgia Tech. Rocket engine hot-fire test stands operate in electrically hostile environments characterized by high EMI, inductive switching spikes from solenoid valves, and ground bounce.
+The **Rapid Engine Test Board (RTB)** was engineered for the **Yellow Jacket Space Program (YJSP)** at Georgia Tech to serve as a high-reliability instrumentation node on rocket engine hot-fire test stands. Test stand environments present extreme electromagnetic interference (EMI), high-amplitude inductive flyback from solenoid valves, and ground potential shifts.
 
-The RTB serves as a dedicated sensor instrumentation node, acquiring critical temperature telemetry from a Resistive Temperature Detection (RTD) sensor with laboratory-grade precision while maintaining total signal integrity and transient immunity.
+To ensure mission success, the board was developed against strict electrical, sensing, and environmental requirements:
 
-<div class="card mt-3 mb-4 p-3 bg-light border">
-  <div class="row">
-    <div class="col-md-6">
-      <strong>Role:</strong> Responsible Engineer, Schematic & PCB Designer<br>
-      <strong>Organization:</strong> Yellow Jacket Space Program (Georgia Tech)<br>
-      <strong>CAD Tool:</strong> Altium Designer
-    </div>
-    <div class="col-md-6">
-      <strong>Architecture:</strong> STM32H573 (Cortex-M33) + TI ADS114S06 16-bit ADC<br>
-      <strong>Stackup:</strong> 4-Layer FR-4 (Signal - Ground - Power - Signal)<br>
-      <strong>Full Schematic:</strong> <a href="{{ '/assets/pdf/Rapid_Test_Board_Schematic.pdf' | relative_url }}" target="_blank"><i class="fa-solid fa-file-pdf"></i> Download Schematic PDF</a>
-    </div>
-  </div>
-</div>
+| Parameter              | Requirement                                      | Implementation                                                                                     |
+| ---------------------- | ------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
+| **Input Voltage**      | 24V DC nominal test stand bus                    | Tolerant up to 60V transients; protected with SMAJ26A TVS and PDS3100 reverse protection           |
+| **Sensing Accuracy**   | $\pm 0.8^\circ\text{C}$ across operating range   | 4-wire Kelvin RTD interface eliminating lead wire resistance errors                                |
+| **Excitation Method**  | No external precision voltage reference drift    | Dual on-chip matched $250\,\mu\text{A}$ / $500\,\mu\text{A}$ IDAC current sources inside ADS114S06 |
+| **Noise Attenuation**  | $>9\text{ dB}$ switching noise suppression       | Balanced differential and common-mode RC filter tuned to $f_c = 15.9\text{ kHz}$                   |
+| **Power Output Rails** | Regulated 5V and ultra-quiet 3.3V                | TI TPS54560B-Q1 buck regulator (up to 5A) + TI TPS7A2033 ultra-low-noise LDO                       |
+| **Compute Core**       | High-speed processing for polynomial calibration | STM32H573RIT6 ARM Cortex-M33 running at 250 MHz with floating-point acceleration                   |
+| **Signal Integrity**   | Zero packet loss and clean digital edges         | $47\,\Omega$ series damping resistors on all SPI lines; unbroken ground return plane               |
+| **Form Factor**        | Compact, test-stand mountable                    | 4-layer FR-4 board with 4 M3 corner mounting holes and keyed Molex connectors                      |
 
 ---
 
-## Analog Front End (AFE) & RTD Sensing
+## 2. Top-Down Layout & Component Floorplan
 
-Accurate cryogenic and engine temperature monitoring is paramount during hot-fire tests. A 4-wire Kelvin sensing configuration was chosen to eliminate lead wire resistance errors, maintaining measurement uncertainty to within **$\pm 0.8^\circ\text{C}$**.
+The physical placement of components on the board was partitioned into distinct functional functional zones to isolate high-energy switching loops from sensitive microvolt-level analog sensor signals:
+
+<div class="row justify-content-sm-center my-3">
+  <div class="col-sm-10 text-center">
+    <img src="{{ '/assets/img/rapid_test_board_pcb.png' | relative_url }}" class="img-fluid rounded z-depth-1" alt="PCB Floorplan Breakdown">
+    <div class="caption">
+      Top-down component floorplan: Power conditioning (top), Analog Front-End (bottom-left), MCU compute (center-right), and JTAG/SWD (bottom-right).
+    </div>
+  </div>
+</div>
+
+### Floorplan Architecture & Routing Strategy:
+
+1. **Power Stage (Top & Top-Left):**
+   - **`J2` (Molex Input):** Power enters through a locking 4-pin Molex connector, immediately passing through the fast-acting fuse (`F1`), TVS clamp (`D2`), and reverse-polarity Schottky diode (`D1`).
+   - **`U4` (TPS54560B Buck) & `L1` (10 $\mu$H Inductor):** The high-frequency switching loop (VIN capacitor $\to$ high-side FET $\to$ catch diode `D4` $\to$ ground) is kept tightly localized with short, wide copper pours to prevent radiated EMI from coupling into the rest of the board.
+   - **`U3` (TPS7A2033 LDO):** Positioned adjacent to the 5V buck output to generate the ultra-low-noise 3.3V analog/digital rail.
+2. **Analog Front-End (Bottom-Left):**
+   - **`J3` (Molex RTD Sensor Connector):** Dedicated 4-pin connector routing Kelvin excitation and sense leads directly through symmetrical RC filtering network (`R18`-`R22`, `C31`-`C36`).
+   - **`U2` (ADS114S06 16-Bit ADC):** Placed directly adjacent to the input filter to minimize analog trace length before digitization.
+3. **Digital Processing (Center-Right):**
+   - **`U1` (STM32H573 MCU):** Centrally located with decoupling capacitors (`C1`-`C8`) placed on every power pin with direct via-to-ground connections.
+   - **Damped SPI Bus:** Traces connecting `U2` to `U1` run over an unbroken Layer 2 ground plane with $47\,\Omega$ series resistors (`R1`, `R2`, `R3`, `R9`, `R10`, `R11`) dampening transmission line ringing.
+4. **Debug & Programming (Bottom-Right):**
+   - **`J1` (Samtec FTSH-107 Header):** 14-pin micro pitch connector providing standard ARM SWD, SWO trace, and virtual COM port UART access.
+
+---
+
+## 3. Schematic Description & Circuit Architecture
+
+The schematic was designed in **Altium Designer** and structured across two hierarchical sheets:
+
+### Sheet 1: Power Distribution & RTD Sensor Interface (`PowerDistr.SchDoc`)
+
+- **Input Filtering & Protection:** Protects against inductive test stand transients with a high-speed TVS diode (`SMAJ26A`), Eaton 1.5A fuse (`3216FF1.5`), and $1\,\text{M}\Omega$ bleeder resistor with a $1\,\text{kV}$ ceramic capacitor to chassis ground.
+- **24V to 5V Step-Down Buck:** Implements the **TI TPS54560B-Q1** with an integrated high-side MOSFET, external bootstrap capacitor (`C21`), and a Type-II compensation network (`R15`, `C29`, `C30`) tuned for stable transient response under dynamic load steps.
+- **5V to 3.3V Analog LDO:** The **TI TPS7A2033** linear regulator provides an ultra-low output noise of $6.5\,\mu\text{V}_{\text{RMS}}$ and high PSRR to isolate sensitive ADC reference voltages from switching ripple.
+- **4-Wire RTD AFE Network:** Uses balanced series resistors and differential/common-mode capacitors ($C_{\text{diff}} = 100\,\text{nF}$, $C_{\text{cm}} = 10\,\text{nF}$) with a $2.5\,\text{k}\Omega$ reference resistor (`R21`) for ratiometric measurement.
 
 <div class="row justify-content-sm-center my-3">
   <div class="col-sm-12 text-center">
-    <img src="{{ '/assets/img/rapid_test_board_schematic_page_1.png' | relative_url }}" class="img-fluid rounded z-depth-1" alt="Power Distribution and RTD Interface Schematic">
+    <img src="{{ '/assets/img/rapid_test_board_schematic_page_1.png' | relative_url }}" class="img-fluid rounded z-depth-1" alt="Sheet 1: Power Distribution and RTD Interface">
     <div class="caption">
-      Sheet 1 Schematic: 24V Input Protection, TPS54560B Buck Regulator, TPS7A2033 LDO, and 4-Wire RTD Differential Filter.
+      Sheet 1: Power conditioning, buck regulation, analog LDO, and 4-wire RTD differential filtering network.
     </div>
   </div>
 </div>
 
-### Key AFE Design Highlights
+### Sheet 2: Microcontroller, 16-Bit ADC, & JTAG (`JTAG.SchDoc`)
 
-- **Delta-Sigma ADC with Integrated IDACs:** Utilizes the **Texas Instruments ADS114S06IPBS**, a 16-bit, 6-channel delta-sigma ADC with programmable gain amplifier (PGA) and integrated dual matched excitation current sources (IDAC). By driving the RTD sensor with on-chip matched IDACs, excitation error is minimized without external precision voltage references.
-- **Symmetrical RC Anti-Aliasing Filter:** The differential sensing lines (`AIN0`, `AIN1`, `AIN2`) and reference lines (`REF0`, `REF1`) pass through a balanced R-C-R differential and common-mode filtering network ($R_{18}, R_{19}, C_{31}, C_{32}, C_{33}$ and $R_{20}, R_{21}, R_{22}, C_{34}, C_{35}, C_{36}$).
-- **LTspice AC Analysis & Cutoff Tuning:** Tuned the filter cutoff frequency to a maximum of **15.9 kHz**, attenuating high-frequency PWM and switching noise by **$>9\text{ dB}$** peak-to-peak before reaching the ADC sampling stage.
-
----
-
-## Power Distribution Network (PDN)
-
-The board accepts raw 24V bus power from the test stand infrastructure and generates regulated **5V** and ultra-quiet **3.3V** rails.
-
-<div class="row">
-  <div class="col-md-6">
-    <h4>Input Protection Stage</h4>
-    <ul>
-      <li><strong>TVS Clamping:</strong> High-energy TVS diode (SMAJ26A) clamps input surges, inductive flyback, and ESD transients.</li>
-      <li><strong>Overcurrent Protection:</strong> Fast-acting surface-mount fuse (Eaton 3216FF1.5, 1.5A).</li>
-      <li><strong>Reverse Polarity Protection:</strong> Low-forward-drop Schottky diode (PDS3100-13, 100V 3A).</li>
-      <li><strong>Input Decoupling:</strong> Low-ESR ceramic capacitor bank (three $10\,\mu\text{F}$ 50V 1210 capacitors) to handle inrush currents.</li>
-    </ul>
-  </div>
-  <div class="col-md-6">
-    <h4>Voltage Regulation Stages</h4>
-    <ul>
-      <li><strong>Primary Buck Converter:</strong> <strong>TI TPS54560B-Q1</strong> step-down switching regulator converting 24V down to 5V at high efficiency with a $10\,\mu\text{H}$ 9.1A power inductor and frequency compensation.</li>
-      <li><strong>Low-Noise Analog LDO:</strong> <strong>TI TPS7A2033</strong> low-dropout linear regulator converting 5V to an ultra-clean 3.3V rail with high PSRR for the microcontroller core and analog circuitry.</li>
-      <li><strong>Rail Clamping:</strong> SMAJ5.0A TVS diode on the 3.3V output rail for secondary overvoltage protection.</li>
-    </ul>
-  </div>
-</div>
-
----
-
-## Microcontroller & Embedded Interface
+- **Analog-to-Digital Converter:** The **TI ADS114S06IPBS** integrates a low-noise programmable gain amplifier (PGA), internal voltage reference, and dual excitation IDACs. It outputs digitized samples over SPI with a dedicated data-ready interrupt (`DRDY`).
+- **High-Performance MCU:** The **STM32H573RIT6** handles real-time sensor polling, floating-point Callendar-Van Dusen polynomial conversion, and telemetry communication. Decoupling capacitors ($100\,\text{nF}$ and $2.2\,\mu\text{F}$ VCAP) ensure stable high-speed switching.
+- **Debug Port:** Samtec FTSH-107 header with $10\,\text{k}\Omega$ pull-up/pull-down resistors on SWDIO, SWCLK, JTDI, and NRST lines.
 
 <div class="row justify-content-sm-center my-3">
   <div class="col-sm-12 text-center">
-    <img src="{{ '/assets/img/rapid_test_board_schematic_page_2.png' | relative_url }}" class="img-fluid rounded z-depth-1" alt="Microcontroller and Digital Interface Schematic">
+    <img src="{{ '/assets/img/rapid_test_board_schematic_page_2.png' | relative_url }}" class="img-fluid rounded z-depth-1" alt="Sheet 2: STM32 MCU, ADC, and JTAG">
     <div class="caption">
-      Sheet 2 Schematic: STM32H573 Cortex-M33 MCU, ADS114S06 ADC SPI Interface, and Samtec FTSH-107 JTAG/SWD Debug Port.
+      Sheet 2: STM32H573 MCU, ADS114S06 16-bit Delta-Sigma ADC, and Samtec FTSH-107 JTAG/SWD interface.
     </div>
   </div>
 </div>
 
-### Digital Architecture Details
-
-- **Host Processor:** **STM32H573RIT6** ARM Cortex-M33 running at up to 250 MHz with hardware floating-point acceleration for real-time polynomial temperature calculation (Callendar-Van Dusen equation).
-- **SPI Interface with Series Damping:** The ADC communicates with the STM32 via high-speed SPI. All digital signal lines (`CS`, `START`, `MOSI`, `SCLK`, `MISO`, `DRDY`) include **$47\,\Omega$ series damping resistors** ($R_1, R_2, R_3, R_9, R_{10}, R_{11}$) placed close to driver pins to suppress transmission line ringing and impedance mismatch reflections.
-- **Debug Port:** Standardized 14-pin micro header (**Samtec FTSH-107-01-F-DV-K-P-TR**) supporting SWD debugging, SWO trace output, and UART virtual COM port communication.
-
 ---
 
-## PCB Layout & Signal Integrity
+## 4. Embedded Schematic PDF Viewer
 
-The 4-layer stackup was strategically routed to separate noisy switching paths from microvolt-level analog sensor signals:
+You can inspect the complete, interactive vector schematic with all component values, net labels, and pinouts directly below, or open the PDF in a new tab:
 
-1. **Layer Stackup:**
-   - **Layer 1 (Top Signal):** Component placement, critical high-frequency SPI differential pairs, and sensor traces.
-   - **Layer 2 (Ground Plane):** Unbroken reference ground plane beneath the entire board providing low-inductance return current paths.
-   - **Layer 3 (Power Plane):** Partitioned power distribution polygons (24V, 5V, 3.3V) with decoupling caps placed directly at IC power pins.
-   - **Layer 4 (Bottom Signal):** Auxiliary routing with ground fill and thermal vias connecting hot power pads to bottom copper heat spreaders.
-2. **Noise Isolation:** The buck converter switching node (`SW`) and inductor $L_1$ were isolated with compact loops away from the sensitive ADC input pins and RTD connector. Ground stitching vias were placed along board perimeters and plane transitions to minimize EMI emissions.
+<div class="mb-3 text-right">
+  <a href="{{ '/assets/pdf/Rapid_Test_Board_Schematic.pdf' | relative_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary">
+    <i class="fa-solid fa-up-right-from-square"></i> Open Schematic PDF in Full Window
+  </a>
+  <a href="{{ '/assets/pdf/Rapid_Test_Board_Schematic.pdf' | relative_url }}" download class="btn btn-sm btn-primary">
+    <i class="fa-solid fa-download"></i> Download Schematic PDF
+  </a>
+</div>
 
----
-
-## Documentation & Downloads
-
-- **Schematic PDF:** <a href="{{ '/assets/pdf/Rapid_Test_Board_Schematic.pdf' | relative_url }}" target="_blank"><i class="fa-solid fa-file-pdf"></i> Download Complete Altium Schematic (2 Pages, PDF)</a>
-- **Project Images:** High-resolution 3D board render and schematics available in [`assets/img/`](/assets/img/).
+<div class="card p-1 shadow-sm" style="width: 100%; height: 750px; border: 1px solid #ccc; border-radius: 6px; overflow: hidden;">
+  <object data="{{ '/assets/pdf/Rapid_Test_Board_Schematic.pdf' | relative_url }}" type="application/pdf" width="100%" height="100%" style="border: none;">
+    <iframe src="{{ '/assets/pdf/Rapid_Test_Board_Schematic.pdf' | relative_url }}" width="100%" height="100%" style="border: none;">
+      <p>Your browser does not support embedded PDFs. Please <a href="{{ '/assets/pdf/Rapid_Test_Board_Schematic.pdf' | relative_url }}" target="_blank">click here to download the schematic PDF</a>.</p>
+    </iframe>
+  </object>
+</div>
