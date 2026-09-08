@@ -2,7 +2,7 @@
 layout: page
 title: Ground System Avionics Module 5
 description: TBD — Currently in layout stage.
-importance: 3
+importance: 4
 category: work
 ---
 
