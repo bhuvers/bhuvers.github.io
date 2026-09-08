@@ -3,7 +3,7 @@ layout: page
 title: Rapid Test Board
 description: 4-layer mixed-signal engine test avionics board designed for high-precision 4-wire RTD temperature sensing, low-noise power delivery, and real-time telemetry.
 img: assets/img/rapid_test_board_pcb.png
-importance: 1
+importance: 2
 category: work
 ---
 

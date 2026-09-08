@@ -2,7 +2,7 @@
 layout: page
 title: Flight Computer
 description: Currently undergoing design requirements for a custom personal drone platform.
-importance: 4
+importance: 5
 category: work
 ---
 

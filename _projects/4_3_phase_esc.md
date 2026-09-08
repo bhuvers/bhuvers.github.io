@@ -2,7 +2,7 @@
 layout: page
 title: 3-Phase Electronic Speed Controller (ESC)
 description: TBD — Currently in layout stage.
-importance: 3
+importance: 4
 category: work
 ---
 
