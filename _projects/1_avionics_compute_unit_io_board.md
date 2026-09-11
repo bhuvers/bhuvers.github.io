@@ -2,16 +2,16 @@
 layout: page
 title: Avionics Compute Unit IO Board
 description: High-density mixed-signal avionics carrier board featuring a 168-pin high-speed mezzanine connector, 60V step-down power conversion, bidirectional IV sensing, 24-bit delta-sigma ADC telemetry, Ethernet, and logic analyzer breakouts.
-img: assets/img/acu_io_board_pcb.png
+img: assets/img/acu_io_board_xray.png
 importance: 1
 category: work
 ---
 
 <div class="row justify-content-sm-center">
   <div class="col-sm-10 mt-3 mt-md-0 text-center">
-    <img src="{{ '/assets/img/acu_io_board_pcb.png' | relative_url }}" class="img-fluid rounded z-depth-1" alt="Avionics Compute Unit IO Board Top-Down 3D Layout">
+    <img src="{{ '/assets/img/acu_io_board_xray.png' | relative_url }}" class="img-fluid rounded z-depth-1" alt="Avionics Compute Unit IO Board Altium Layout X-Ray">
     <div class="caption">
-      Top-Down 3D PCB Layout Render of the Avionics Compute Unit (ACU) IO Board (Carrier) with Mated ACU Mezzanine Flight Computer — Yellow Jacket Space Program (YJSP), Georgia Tech. Responsible Engineer: Bhuvanesh Senthil.
+      Altium Designer Composite X-Ray Routing &amp; Layer Layout of the Avionics Compute Unit (ACU) IO Board — Yellow Jacket Space Program (YJSP), Georgia Tech. Responsible Engineer: Bhuvanesh Senthil.
     </div>
   </div>
 </div>
@@ -280,7 +280,7 @@ The physical layout was designed in **Altium Designer** with a rigorous function
   <div class="col-sm-10 text-center">
     <img src="{{ '/assets/img/acu_io_board_pcb.png' | relative_url }}" class="img-fluid rounded z-depth-1" alt="ACU IO Board Top-Down PCB Layout">
     <div class="caption">
-      Top-down 3D PCB layout render showing functional zone partitioning, connector placement, and the central mezzanine mating interface.
+      Top-Down 3D PCB Layout Render of the Avionics Compute Unit (ACU) IO Board with mated ACU mezzanine flight computer showing functional zone partitioning, connector placement, and the central mezzanine mating interface.
     </div>
   </div>
 </div>
